@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Face Recognition</title>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+</head>
+<link rel="stylesheet" href="/static/css/main.css">
+<body>
+  <h2 id="title">Face Recognition </h2>
+  <div class="detection">
+    <video id="myVideo" autoplay></video>
+  </div>
+</body>
+<script src="/static/js/getUserMedia.js"></script>
+<script src="/static/js/configTitle.js"></script>
+<script id="objDetect" src="/static/js/objDetect.js" data-source="myVideo"
+ data-mirror="true" data-uploadWidth="960" ></script>
+</html>

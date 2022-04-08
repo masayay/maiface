@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Face Registration</title>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+</head>
+<link rel="stylesheet" href="/static/css/main.css">
+<body>
+  <h2>FACE Registration</h2>
+  <button type="button" onclick="copyFrame()">Capture</button>
+  <button type="button" onclick="delFrame()">Restart</button>
+  <form action="/api/face_register" method="post" id="faceid_regist_form">
+    <select name="groupid" id="groupid">
+        <option value=""></option>
+        {% for x in groups %}
+        <option value="{{ x['groupid'] }}">{{ x['groupname'] }}</option>
+        {% endfor %}
+    </select>
+    <input type="textbox" name="userid" id="userid" placeholder="User ID" />
+    <button type="submit">Register</button>
+  </form>
+  <div class="register">
+    <video id="myVideo" autoplay></video>
+  </div>
+</body>
+<script src="/static/js/getUserMedia.js"></script>
+<script src="/static/js/registrationControl.js"></script>
+</html>

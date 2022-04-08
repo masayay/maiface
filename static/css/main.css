@@ -1,0 +1,63 @@
+.detection video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    /* Mirror the local video */
+    transform: scale(-1, 1);            /*For Firefox (& IE) */
+    -webkit-transform: scale(-1, 1);     /*for Chrome & Opera (& Safari) */
+}
+
+.detection canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:1;
+    height: 100%;
+}
+
+.register video {
+    pointer-events: none;
+    position: absolute;
+    top: 60;
+    left: 0;
+    z-index: -1; 
+    transform: scale(-1, 1);            /*For Firefox (& IE) */
+    -webkit-transform: scale(-1, 1);     /*for Chrome & Opera (& Safari) */
+}
+
+.register canvas {
+    pointer-events: none;
+    position: absolute;
+    top: 60;
+    left: 0;
+    z-index: 1; 
+    transform: scale(-1, 1);            /*For Firefox (& IE) */
+    -webkit-transform: scale(-1, 1);     /*for Chrome & Opera (& Safari) */
+}
+
+form {
+    display: inline
+}
+
+button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  margin: 0.2em 0;
+  padding: 0.6em 0.6em;
+  font-size: 0.8em;
+  background-color: #1aa1ff;
+  color: #FFF;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 0;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #064fda;
+}
+
