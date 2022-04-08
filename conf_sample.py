@@ -22,10 +22,10 @@ ENABLE_GPU = True
 SPEED_TEST = False
 
 # Embedding Files
-EMBEDDINGS = '/var/lib/aoiface/embeddings'
+EMBEDDINGS = '/var/lib/maiface/embeddings'
 
 # Pretrained model cache directory
-CACHE_DIR = '/var/lib/aoiface/torch'
+CACHE_DIR = '/var/lib/maiface/torch'
 
 # When embedding distance below this, show comapny id. (Recommend:0.1 ~ 0.6)
 #  (0.0 = identical, 1.0 < different)
@@ -55,7 +55,7 @@ IVFFLAT = False
 FAISS_EVENT_MANAGER = 'redis'
 
 # When use 'text'
-#FAISS_QUEUE = '/var/lib/aoiface/faiss_queue.txt'
+#FAISS_QUEUE = '/var/lib/maiface/faiss_queue.txt'
 FAISS_QUEUE = ''
 
 # Redis index
@@ -105,16 +105,16 @@ AUTH_2 = 0.35
 
 # Logging
 ORGANIZER_LOG_LEVEL = 'DEBUG'
-ORGANIZER_LOGFILE = '/var/log/aoiface/auth_organaizer_log.txt'
+ORGANIZER_LOGFILE = '/var/log/maiface/auth_organaizer_log.txt'
 
 ##################
 # Batch
 ##################
 # Original image file directory
-PICTURES = '/var/lib/aoiface/original'
+PICTURES = '/var/lib/maiface/original'
 
 # Embedding file output directory
-EMBEDDINGS_BATCH_OUT = '/var/lib/aoiface/embeddings'
+EMBEDDINGS_BATCH_OUT = '/var/lib/maiface/embeddings'
 
 # Batch mode or non-batch mode
 BATCH_MODE = True
@@ -128,4 +128,4 @@ WORKERS = 2
 
 # Logging
 BATCH_LOG_LEVEL = 'DEBUG'
-BATCH_LOGFILE = '/var/log/aoiface/batch_log.txt'
+BATCH_LOGFILE = '/var/log/maiface/batch_log.txt'
