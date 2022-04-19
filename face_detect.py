@@ -113,7 +113,8 @@ class FaceDetector(object):
             index.train(ndarrays)
             assert index.is_trained
         # Create index
-        index.add(ndarrays)
+        if ndarrays.any():
+            index.add(ndarrays)
         logger.info("Faiss index initialized. People: %s Faces: %s" % (num_faceid, len(index_ids)))
         
         return index, index_ids

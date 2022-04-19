@@ -1,5 +1,3 @@
 __pycache__
 *.pyc
-conf.py
-auth_organizer.py
-feature_extraction_batch.py
+conf_org.py

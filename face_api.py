@@ -11,7 +11,7 @@ from typing import List
 import io
 import conf
 from sqlalchemy.orm import Session
-import utils.db_util as db_util
+#import utils.db_util as db_util
 """
 Load Configuration
 """
@@ -49,11 +49,6 @@ async def registration(request: Request):
 """
 api
 """
-@app.get("/auth_history/", response_model=List[db_util.AuthHistory])
-def get_auth_history(skip: int = 0, limit: int = 100, db: Session = Depends(db_util.get_db)):
-    auth_history = db_util.get_auth_history(db, skip=skip, limit=limit)
-    return auth_history
-
 @app.get("/api/groups", response_model=List[Group])
 async def get_groups():
     return GROUPS

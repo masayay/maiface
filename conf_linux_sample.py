@@ -25,7 +25,7 @@ SPEED_TEST = False
 EMBEDDINGS = '/var/lib/maiface/embeddings'
 
 # Pretrained model cache directory
-CACHE_DIR = '/var/lib/maiface/torch'
+CACHE_DIR = '/var/lib/maiface/cache'
 
 # When embedding distance below this, show comapny id. (Recommend:0.1 ~ 0.6)
 #  (0.0 = identical, 1.0 < different)
@@ -51,12 +51,12 @@ IVFFLAT = False
 # Faiss event manager
 # When gunicorn worker is more than 2, use text or redis for thread safe.
 #FAISS_EVENT_MANAGER = ''
-#FAISS_EVENT_MANAGER = 'text'
-FAISS_EVENT_MANAGER = 'redis'
+FAISS_EVENT_MANAGER = 'text'
+#FAISS_EVENT_MANAGER = 'redis'
 
 # When use 'text'
-#FAISS_QUEUE = '/var/lib/maiface/faiss_queue.txt'
-FAISS_QUEUE = ''
+FAISS_QUEUE = '/var/lib/maiface/faiss_queue.txt'
+#FAISS_QUEUE = ''
 
 # Redis index
 FAISS_IDX = '1'
@@ -81,40 +81,13 @@ REDIS_PORT =  '6379'
 REDIS_PASS = 'password'
 
 ##################
-# Database
-##################
-DBUSER = "dbuser"
-DBPASS = "dbpass"
-DBHOST = "127.0.0.1"
-DBPORT = 3306
-DBNAME = "face_db"
-ENABLE_PROCEDURE = True
-
-##################
-# Auth Organizer
-##################
-# Continuous same combination of face id and device id
-# are authorized only 1 time in auth period(sec).
-AUTH_PERIOD = 60
-
-# 1 nearest distance threshold for authorize
-AUTH_1 = 0.2
-
-# Average of 3 nearest distance threshold for authorize
-AUTH_2 = 0.35
-
-# Logging
-ORGANIZER_LOG_LEVEL = 'DEBUG'
-ORGANIZER_LOGFILE = '/var/log/maiface/auth_organaizer_log.txt'
-
-##################
 # Batch
 ##################
 # Original image file directory
-PICTURES = '/var/lib/maiface/original'
+PICTURES = '/var/lib/maiface/picture'
 
 # Embedding file output directory
-EMBEDDINGS_BATCH_OUT = '/var/lib/maiface/embeddings'
+EMBEDDINGS_BATCH_OUT = '/var/lib/maiface/batchout'
 
 # Batch mode or non-batch mode
 BATCH_MODE = True
@@ -128,4 +101,4 @@ WORKERS = 2
 
 # Logging
 BATCH_LOG_LEVEL = 'DEBUG'
-BATCH_LOGFILE = '/var/log/maiface/batch_log.txt'
+BATCH_LOGFILE = '/var/log/gunicorn/batch_log.txt'

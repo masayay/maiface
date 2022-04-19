@@ -12,5 +12,3 @@ facenet_pytorch>=2.5.2
 faiss_gpu>=1.7.1.post2
 fastapi>=0.70.0
 redis>=4.0.2
-mariadb>=1.0.8
-sqlalchemy>=1.4.28
