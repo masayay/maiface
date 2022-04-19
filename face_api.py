@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, File, UploadFile, Form, Depends
+from fastapi import FastAPI, Request, File, UploadFile, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import JSONResponse
@@ -10,8 +10,6 @@ from utils.face_api_response import Group, GROUPS, ApiResponse, Face
 from typing import List
 import io
 import conf
-from sqlalchemy.orm import Session
-#import utils.db_util as db_util
 """
 Load Configuration
 """
