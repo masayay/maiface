@@ -5,6 +5,58 @@ Developed with Pytorch, Faiss and Fastapi.
 After register your face, return group name and user id.  
 ![demo2a](https://user-images.githubusercontent.com/92005636/162384252-1dfacef8-1c6c-4a01-bc38-6fd0bf905248.jpg)  
 
-## Design Concept
-### Server - Client
-![01](https://user-images.githubusercontent.com/92005636/162377971-2bd87ad1-4d29-4079-bb8f-730cda8f02cf.jpg)
+## Install
+1. Instal requirements  
+~~~
+apt install python3-pip
+pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+pip3 install faiss-gpu
+pip3 install facenet-pytorch
+pip3 install aiofiles Jinja2
+pip3 install pillow
+pip3 install fastapi python-multipart
+pip3 install uvicorn[standard] Gunicorn
+~~~
+2. Configure Application  
+~~~
+mkdir /var/www/
+cd /var/www
+git clone https://github.com/masayay/maiface.git
+mv maiface/conf_linux_sample.py maiface/conf.py
+~~~
+3. Configure Gunicorn
+~~~
+mkdir /etc/gunicorn
+mv maiface/maiface_config.py /etc/gunicorn/maiface_config.py
+
+mkdir /var/log/gunicorn
+mkdir /var/lib/maiface
+mkdir /var/lib/maiface/cache
+mkdir /var/lib/maiface/embeddings
+
+useradd -U -m -s /usr/sbin/nologin gunicorn
+chown gunicorn:gunicorn /var/log/gunicorn
+chown -R gunicorn:gunicorn /var/www/maiface
+chown -R gunicorn:gunicorn /var/lib/maiface
+chown -R gunicorn:gunicorn /etc/gunicorn
+~~~
+4. Start Application
+~~~
+vi /etc/systemd/system/maiface.service
+~~~
+~~~
+[Unit]
+Description=maiface daemon
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/usr/local/bin/gunicorn --config /etc/gunicorn/maiface_config.py
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target
+~~~
