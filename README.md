@@ -42,21 +42,8 @@ chown -R gunicorn:gunicorn /etc/gunicorn
 ~~~
 4. Start Application
 ~~~
-vi /etc/systemd/system/maiface.service
+mv maiface/systemd_sample.txt /etc/systemd/system/maiface.service
+systemctl daemon-reload
+systemctl start maiface
 ~~~
-~~~
-[Unit]
-Description=maiface daemon
-After=network.target
 
-[Service]
-Type=notify
-ExecStart=/usr/local/bin/gunicorn --config /etc/gunicorn/maiface_config.py
-ExecReload=/bin/kill -s HUP $MAINPID
-ExecStop=/bin/kill -s TERM $MAINPID
-KillMode=mixed
-TimeoutStopSec=5
-
-[Install]
-WantedBy=multi-user.target
-~~~
