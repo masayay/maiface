@@ -46,4 +46,11 @@ mv maiface/systemd_sample.txt /etc/systemd/system/maiface.service
 systemctl daemon-reload
 systemctl start maiface
 ~~~
-
+5. Start nginx
+~~~
+apt install nginx
+cp maiface/nginx_sample.txt /etc/nginx/sites-available/maiface
+rm -f /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/maiface /etc/nginx/sites-enabled/maiface
+systemctl start nginx
+~~~
